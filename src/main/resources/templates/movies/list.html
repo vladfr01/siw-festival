@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Film</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Film</h1>
+<p><a href="/">Torna alla home</a></p>
+
+<p th:if="${movies.isEmpty()}">Non ci sono film nel sistema.</p>
+
+<section class="film-grid">
+    <a class="film-card" th:each="movie : ${movies}" th:href="@{'/movies/' + ${movie.id}}">
+        <h3 th:text="${movie.title}">Titolo del film</h3>
+        <p th:text="${movie.year} + ' · ' + ${movie.duration} + ' min'">2013 · 141 min</p>
+        <span class="badge" th:text="${movie.genre}">Genere</span>
+    </a>
+</section>
+</body>
+</html>

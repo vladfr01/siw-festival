@@ -1,0 +1,83 @@
+body{
+    font-family: sans-serif;
+    background-color: #181818;
+    color: #dadada;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+h1, h2 {
+    color: #ffc799;
+}
+
+a {
+    color: #50b5aa;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #505050;
+    padding: 8px;
+}
+
+/* header: titolo a sinistra, menu a destra */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a{
+    margin-left: 16px;
+}
+
+/*griglia delle card*/
+.film-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.film-card{
+    background-color: #232323;
+    border: 1px solid #333333;
+    border-radius: 8px; /*angoli arrotondati*/
+    padding: 16px;
+    width: 200px;
+}
+
+.badge{
+    background-color: #ffc799;
+    color: #000000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+.film-card {
+    color: inherit;
+    text-decoration: none;
+}
+
+.film-card:hover {
+    border-color: #ffc799;
+    background-color: #2e2e2e;
+    transform: translateY(-4px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
