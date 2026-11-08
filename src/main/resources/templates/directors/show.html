@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${director.name} + ' ' + ${director.surname}">Nome Cognome del regista</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1 th:text="${director.name} + ' ' + ${director.surname}">Nome Cognome del regista</h1>
+<p><a href="/directors">← Tutti i registi</a></p>
+
+<table>
+    <tr><th>Nazionalita</th><th>Data di Nascita</th></tr>
+    <tr>
+        <td th:text="${director.nationality}">italiana</td>
+        <td th:text="${director.birthDate}">1970-05-31</td>
+    </tr>
+</table>
+</body>
+</html>

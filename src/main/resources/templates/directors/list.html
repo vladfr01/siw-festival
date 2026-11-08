@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registi</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Registi</h1>
+<p><a href="/">Torna alla home</a></p>
+
+<p th:if="${directors.isEmpty()}">Non ci sono registi nel sistema.</p>
+
+<section class="film-grid">
+    <a class="film-card" th:each="director : ${directors}" th:href="@{'/directors/' + ${director.id}}">
+        <h3 th:text="${director.name} + ' ' + ${director.surname}">Nome Cognome del regista</h3>
+        <p th:text="${director.birthDate}" ></p>
+        <span class="badge" th:text="${director.nationality}">Nazionalita'</span>
+    </a>
+</section>
+</body>
+</html>
