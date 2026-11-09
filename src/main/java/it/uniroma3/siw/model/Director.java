@@ -5,6 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+
+//altre importazioni
+import java.util.List;
 
 import java.time.LocalDate;
 
@@ -19,6 +23,9 @@ public class Director {
     private String surname;
     private LocalDate birthDate;
     private String nationality;
+    @OneToMany(mappedBy = "director")
+    private List<Movie> movies; //siccome il regista ha molti film, mi serve una lista per collezionare tutti i suoi film
+
 
     //GETTER E SETTER
 
@@ -41,4 +48,9 @@ public class Director {
     //nationality
     public String getNationality(){return nationality;}
     public void setNationality(String nationality){this.nationality = nationality;}
+
+    //movies
+    public List<Movie> getMovies(){return movies;}
+    public void setMovies(List<Movie> movies){this.movies = movies;}
+
 }

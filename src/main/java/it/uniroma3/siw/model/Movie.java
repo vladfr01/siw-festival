@@ -2,10 +2,8 @@
 
 package it.uniroma3.siw.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Movie {
@@ -18,11 +16,12 @@ public class Movie {
     private Integer year;
     private Integer duration; //minuti
     private String genre;
+    @ManyToOne
+    private Director director;
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -30,7 +29,6 @@ public class Movie {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -38,7 +36,6 @@ public class Movie {
     public Integer getYear() {
         return year;
     }
-
     public void setYear(Integer year) {
         this.year = year;
     }
@@ -46,7 +43,6 @@ public class Movie {
     public Integer getDuration() {
         return duration;
     }
-
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
@@ -54,8 +50,10 @@ public class Movie {
     public String getGenre() {
         return genre;
     }
-
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    public Director getDirector(){return director;}
+    public void setDirector(Director director){this.director = director;}
 }

@@ -10,11 +10,17 @@
 <p><a href="/movies">← Tutti i film</a></p>
 
 <table>
-    <tr><th>Anno</th><th>Durata</th><th>Genere</th></tr>
+    <tr><th>Anno</th><th>Durata</th><th>Genere</th><th>Regista</th></tr>
     <tr>
         <td th:text="${movie.year}">2013</td>
         <td th:text="${movie.duration} + ' min'">141 min</td>
         <td th:text="${movie.genre}">Drammatico</td>
+        <td>
+            <a th:href="@{/directors/{id}(id=${movie.director.id})}"
+               th:text="${movie.director.name} + ' ' + ${movie.director.surname}"> Paolo Sorrentino
+            </a>
+            <span th:unless="${movie.director}">Non specificato</span>
+        </td>
     </tr>
 </table>
 </body>
