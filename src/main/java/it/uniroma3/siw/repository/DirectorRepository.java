@@ -2,7 +2,7 @@
 
 package it.uniroma3.siw.repository;
 
-//importo i tools che serviaranno all'iternface di fare tutto da solo dal framework di spring
+//importo i tools che serviranno all'interface di fare tutto da solo dal framework di spring
 import org.springframework.data.jpa.repository.JpaRepository;
 
 //salvo nella rubrica dei contatti Director cosi che non debba ogni volta scrivere it.uniroma3.siw.model.Director

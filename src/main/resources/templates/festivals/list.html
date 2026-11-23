@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Festival</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Festival</h1>
+<p><a href="/">Torna alla home</a></p>
+
+<p th:if="${festivals.isEmpty()}">Non ci sono festival nel sistema.</p>
+
+<section class="film-grid">
+    <a class="film-card" th:each="festival : ${festivals}" th:href="@{'/festivals/' + ${festival.id}}">
+        <h3 th:text="${festival.name}">Nome del Festival</h3>
+        <p th:text="${festival.edition} + ' · ' + ${festival.city}">Festival di Cannes · Cannes</p>
+        <p th:text="'dal ' + ${festival.startDate} + ' al ' + ${festival.endDate}" ></p>
+    </a>
+</section>
+</body>
+</html>

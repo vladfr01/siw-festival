@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${festival.name}">Nome del Festival</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1 th:text="${festival.name}">Nome del Festival</h1>
+<p><a href="/festivals">← Tutti i festival</a></p>
+
+<table>
+    <tr><th>Città</th><th>Edizione</th><th>Inizio</th><th>Fine</th></tr>
+    <tr>
+        <td th:text="${festival.city}">Cannes</td>
+        <td th:text="${festival.edition}">78ª edizione</td>
+        <td th:text="${festival.startDate}">2025-05-13</td>
+        <td th:text="${festival.endDate}">2025-05-24</td>
+    </tr>
+</table>
+
+</body>
+</html>

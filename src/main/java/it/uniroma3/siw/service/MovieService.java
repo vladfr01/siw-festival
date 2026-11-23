@@ -6,7 +6,7 @@ import java.util.Optional; // import necessario ad evitare che il programma vadi
 
 import org.springframework.stereotype.Service; //import del framework di spring che ci servira' a dire che MovieServie e' il Cuoco
 
-import it.uniroma3.siw.model.Movie; //import che serve a dire al cuoco qual e' l'ogeto su cui dovra lavorare
+import it.uniroma3.siw.model.Movie; //import che serve a dire al cuoco qual e' l'oggeto su cui dovra lavorare
 import it.uniroma3.siw.repository.MovieRepository; //import che serve a dire al cuoco il nome del suo aiuto-cuoco
 
 //andiamo qua a creare il cuoco e a collegarlo al suo ambiente di lavoro

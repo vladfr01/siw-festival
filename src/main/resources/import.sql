@@ -9,3 +9,7 @@ insert into movie (id, title, year, duration, genre, director_id) values (nextva
 insert into movie (id, title, year, duration, genre, director_id) values (nextval('movie_seq'), 'Oppenheimer', 2023, 180, 'Biografico', (select id from director where surname = 'Nolan'));
 insert into movie (id, title, year, duration, genre, director_id) values (nextval('movie_seq'), 'Nuovo Cinema Paradiso', 1988, 155, 'Drammatico', (select id from director where surname = 'Tornatore'));
 insert into movie (id, title, year, duration, genre, director_id) values (nextval('movie_seq'), 'Perfect Days', 2023, 123, 'Drammatico', (select id from director where surname = 'Wenders'));
+
+insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Mostra del Cinema di Venezia', 'Venezia', '82ª edizione', '2025-08-27', '2025-09-06');
+insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Festival di Cannes', 'Cannes', '78ª edizione', '2025-05-13', '2025-05-24');
+insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Berlinale', 'Berlino', '75ª edizione', '2025-02-13', '2025-02-23');
