@@ -1,4 +1,3 @@
-
 //CAMERIERE
 package it.uniroma3.siw.controller;
 
@@ -9,7 +8,9 @@ import it.uniroma3.siw.service.FestivalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
 
@@ -17,17 +18,31 @@ import java.util.Optional;
 @Controller
 public class FestivalController {
 
-        //creo variabile cuoco dentro questa classe
-        private final FestivalService festivalService;
-        public FestivalController(FestivalService festivalService){
-            this.festivalService = festivalService;
-        }
+    //creo variabile cuoco dentro questa classe
+    private final FestivalService festivalService;
 
-        @GetMapping("/festivals")
-        public String list(Model model){
-            model.addAttribute("festivals", festivalService.findAll());
-            return "festivals/list";
-        }
+    public FestivalController(FestivalService festivalService) {
+        this.festivalService = festivalService;
+    }
+
+    @GetMapping("/festivals")
+    public String list(Model model) {
+        model.addAttribute("festivals", festivalService.findAll());
+        return "festivals/list";
+    }
+
+    @GetMapping("/festivals/new") //la voce del menu "voglio aggiungere un festival"
+    public String newForm(Model model) {
+        model.addAttribute("festival", new Festival());
+        return "festivals/form";
+    }
+
+    //il cameriere riceve il modulo compilato
+    @PostMapping("/festivals")
+    public String save(@ModelAttribute("festival") Festival festival){
+        Festival saved = festivalService.save(festival);
+        return "redirect:/festivals/" + saved.getId();
+    }
 
     @GetMapping("/festivals/{id}")
     public String show(@PathVariable Long id, Model model) {

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuovo festival</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Nuovo festival</h1>
+<p><a href="/festivals">← Tutti i festival</a></p>
+
+<form th:action="@{/festivals}" method="post" th:object="${festival}">
+    <p><label>Nome<br><input type="text" th:field="*{name}" required></label></p>
+    <p><label>Città<br><input type="text" th:field="*{city}" required></label></p>
+    <p><label>Edizione<br><input type="text" th:field="*{edition}" placeholder="es. 83ª edizione"></label></p>
+    <p><label>Data di inizio<br><input type="date" th:field="*{startDate}"></label></p>
+    <p><label>Data di fine<br><input type="date" th:field="*{endDate}"></label></p>
+    <button type="submit">Salva il festival</button>
+</form>
+</body>
+</html>
