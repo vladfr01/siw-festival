@@ -19,5 +19,14 @@
     </tr>
 </table>
 
+<h2>Film del Festival</h2>
+<ul th:unless="${festival.movies.isEmpty()}">
+    <li th:each="movie : ${festival.movies}">
+        <a th:href="@{/movies/{id}(id=${movie.id})}" th:text="${movie.title}"> La grande bellezza </a>
+    </li>
+</ul>
+
+<p th:if="${festival.movies.isEmpty()}">Nessun film presente</p>
+
 </body>
 </html>

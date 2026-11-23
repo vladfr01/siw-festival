@@ -1,12 +1,10 @@
 package it.uniroma3.siw.model;
 //importazione degli strumenti che serviranno a jakarta per salvare i dati della classe nel database
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Festival {
@@ -20,6 +18,13 @@ public class Festival {
     private String edition;
     private LocalDate startDate;
     private LocalDate endDate;
+
+    //creo la tabella della relazione molti a molti tra movies e festivals
+    @ManyToMany
+    @JoinTable(name = "festival_movie",
+        joinColumns = @JoinColumn(name = "festival_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<Movie> movies; // la lista dei film di questo festival
 
     //GETTER E SETTER
 
@@ -47,6 +52,8 @@ public class Festival {
     public LocalDate getEndDate(){return endDate;}
     public void setEndDate(LocalDate endDate){this.endDate = endDate;}
 
-
+    //movies
+    public List<Movie> getMovies(){return movies;}
+    public void setMovies(List<Movie> movies){this.movies = movies;}
 }
 

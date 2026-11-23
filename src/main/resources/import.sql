@@ -13,3 +13,10 @@ insert into movie (id, title, year, duration, genre, director_id) values (nextva
 insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Mostra del Cinema di Venezia', 'Venezia', '82ª edizione', '2025-08-27', '2025-09-06');
 insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Festival di Cannes', 'Cannes', '78ª edizione', '2025-05-13', '2025-05-24');
 insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Berlinale', 'Berlino', '75ª edizione', '2025-02-13', '2025-02-23');
+
+insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Mostra del Cinema di Venezia'), (select id from movie where title = 'Oppenheimer'));
+insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Mostra del Cinema di Venezia'), (select id from movie where title = 'Nuovo Cinema Paradiso'));
+insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Festival di Cannes'), (select id from movie where title = 'La grande bellezza'));
+insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Festival di Cannes'), (select id from movie where title = 'Perfect Days'));
+insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Festival di Cannes'), (select id from movie where title = 'Nuovo Cinema Paradiso'));
+insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Berlinale'), (select id from movie where title = 'Il sorpasso'));

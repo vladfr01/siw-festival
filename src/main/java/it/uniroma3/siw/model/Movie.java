@@ -5,6 +5,8 @@ package it.uniroma3.siw.model;
 import jakarta.persistence.*;
 import jakarta.persistence.ManyToOne;
 
+import java.util.List;
+
 @Entity
 public class Movie {
     @Id
@@ -16,8 +18,15 @@ public class Movie {
     private Integer year;
     private Integer duration; //minuti
     private String genre;
+
+    //relazione uno a molti con Director (il film appartiene a un solo regista)
     @ManyToOne
     private Director director;
+
+    //relazione molti a molti con festivals (ogni festival ha diversi film) -> qui movies fa da riflesso
+    @ManyToMany(mappedBy = "movies")
+    private List<Festival> festivals;
+
 
     public Long getId() {
         return id;
@@ -56,4 +65,8 @@ public class Movie {
 
     public Director getDirector(){return director;}
     public void setDirector(Director director){this.director = director;}
+
+    //get e setter della lista festivals
+    public List<Festival> getFestivals(){return festivals;}
+    public void setFestivals(List<Festival> festivals){this.festivals = festivals;}
 }

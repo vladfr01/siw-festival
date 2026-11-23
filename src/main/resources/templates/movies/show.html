@@ -16,12 +16,22 @@
         <td th:text="${movie.duration} + ' min'">141 min</td>
         <td th:text="${movie.genre}">Drammatico</td>
         <td>
-            <a th:href="@{/directors/{id}(id=${movie.director.id})}"
+            <a th:if="${movie.director}" th:href="@{/directors/{id}(id=${movie.director.id})}"
                th:text="${movie.director.name} + ' ' + ${movie.director.surname}"> Paolo Sorrentino
             </a>
             <span th:unless="${movie.director}">Non specificato</span>
         </td>
     </tr>
 </table>
+
+<h2>In che Festival si trova il Film</h2>
+<ul th:unless="${movie.festivals.isEmpty()}">
+    <li th:each="festival : ${movie.festivals}">
+        <a th:href="@{/festivals/{id}(id=${festival.id})}" th:text="${festival.name}"> Festival di Cannes </a>
+    </li>
+</ul>
+
+<p th:if="${movie.festivals.isEmpty()}">Nessun festival presente</p>
+
 </body>
 </html>
