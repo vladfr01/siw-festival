@@ -10,6 +10,12 @@
 <p><a href="/">Torna alla home</a></p>
 <p><a href="/festivals/new">+ Aggiungi festival</a></p>
 
+<form class="search" th:action="@{/festivals}" method="get">
+    <input type="text" name="city" th:value="${city}" placeholder="Cerca per città">
+    <button type="submit">Cerca</button>
+    <a href="/festivals">Mostra tutti</a>
+</form>
+
 <p th:if="${festivals.isEmpty()}">Non ci sono festival nel sistema.</p>
 
 <section class="film-grid">

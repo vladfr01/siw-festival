@@ -21,4 +21,8 @@ public class FestivalService {
     public Festival save(Festival festival){
         return festivalRepository.save(festival);
     }
+
+    public List<Festival> findByCity(String city){
+        return festivalRepository.findByCityContainingIgnoreCase(city);
+    }
 }

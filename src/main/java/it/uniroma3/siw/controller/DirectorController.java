@@ -22,6 +22,7 @@ public class DirectorController{
         this.directorService = directorService;
     }
 
+    //il cameriere mostra tuttu il menu dei registi
     @GetMapping("/directors")
     public String list(Model model){
         model.addAttribute("directors", directorService.findAll());
@@ -41,7 +42,7 @@ public class DirectorController{
         return "redirect:/directors/" + saved.getId();
     }
 
-
+    //il cameriere mostra al cliente il direttore con quel specifico id (quindi il cliente ha scelto un direttore specifico)
     @GetMapping("/directors/{id}")
     public String show(@PathVariable Long id, Model model){
         Optional<Director> director = directorService.findById(id);

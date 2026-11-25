@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${room.name}">Sala</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1 th:text="${room.name}">Nome della sala</h1>
+<p><a href="/rooms">← Tutte le sale</a></p>
+
+<table>
+    <tr><th>Nome</th><th>Capienza</th><th>Festival</th></tr>
+    <tr>
+        <td th:text="${room.name}">Sala 1</td>
+        <td th:text="${room.capacity}">250</td>
+        <td>
+            <a th:if="${room.festival}" th:href="@{/festivals/{id}(id=${room.festival.id})}"
+               th:text="${room.festival.name}"> Festival di Cannes
+            </a>
+            <span th:unless="${room.festival}">Non specificato</span>
+        </td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>

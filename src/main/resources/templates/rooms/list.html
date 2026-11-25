@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sale</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Sale</h1>
+<p><a href="/">Torna alla home</a></p>
+
+<p th:if="${rooms.isEmpty()}">Non ci sono sale nel sistema.</p>
+
+<section class="film-grid">
+    <a class="film-card" th:each="room : ${rooms}" th:href="@{'/rooms/' + ${room.id}}">
+        <h3 th:text="${room.name}">Sala 1</h3>
+        <p th:text="${room.capacity} + ' posti'">250</p>
+        <p th:if="${room.festival}" th:text="${room.festival.name}">Festival di Cannes</p>
+    </a>
+</section>
+</body>
+</html>

@@ -7,10 +7,7 @@ import it.uniroma3.siw.model.Festival;
 import it.uniroma3.siw.service.FestivalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -23,12 +20,6 @@ public class FestivalController {
 
     public FestivalController(FestivalService festivalService) {
         this.festivalService = festivalService;
-    }
-
-    @GetMapping("/festivals")
-    public String list(Model model) {
-        model.addAttribute("festivals", festivalService.findAll());
-        return "festivals/list";
     }
 
     //il cameriere porta al cliente il modulo vuoto per inserire il nuovo piatto dentro al menu
@@ -53,5 +44,16 @@ public class FestivalController {
         }
         model.addAttribute("festival", festival.get());
         return "festivals/show";
+    }
+
+    @GetMapping("/festivals")
+    public String list(@RequestParam(required = false) String city, Model model){
+        if (city == null || city.isBlank()) {
+            model.addAttribute("festivals", festivalService.findAll());
+        } else {
+            model.addAttribute("festivals", festivalService.findByCity(city));
+        }
+        model.addAttribute("city", city);
+        return "festivals/list";
     }
 }

@@ -19,6 +19,10 @@ public class Festival {
     private LocalDate startDate;
     private LocalDate endDate;
 
+    //un festival ha diverse sale dove proiettare i film
+    @OneToMany(mappedBy = "festival")
+    private List<Room> rooms;
+
     //creo la tabella della relazione molti a molti tra movies e festivals
     @ManyToMany
     @JoinTable(name = "festival_movie",
@@ -55,5 +59,9 @@ public class Festival {
     //movies
     public List<Movie> getMovies(){return movies;}
     public void setMovies(List<Movie> movies){this.movies = movies;}
+
+    //rooms
+    public List<Room> getRooms(){return rooms;}
+    public void setRooms(List<Room> rooms){this.rooms = rooms;}
 }
 

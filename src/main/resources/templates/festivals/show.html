@@ -25,8 +25,15 @@
         <a th:href="@{/movies/{id}(id=${movie.id})}" th:text="${movie.title}"> La grande bellezza </a>
     </li>
 </ul>
-
 <p th:if="${festival.movies.isEmpty()}">Nessun film presente</p>
+
+<h2>Sale del Festival</h2>
+<ul th:unless="${festival.rooms.isEmpty()}">
+    <li th:each="room : ${festival.rooms}">
+        <a th:href="@{/rooms/{id}(id=${room.id})}" th:text="${room.name}"> Sala 1 </a>
+    </li>
+</ul>
+<p th:if="${festival.rooms.isEmpty()}">Nessuna sala presente</p>
 
 </body>
 </html>
