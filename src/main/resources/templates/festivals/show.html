@@ -35,5 +35,16 @@
 </ul>
 <p th:if="${festival.rooms.isEmpty()}">Nessuna sala presente</p>
 
+<h2>Programma</h2>
+<table th:unless="${screenings.isEmpty()}">
+    <tr><th>Data</th><th>Film</th><th>Sala</th></tr>
+    <tr th:each="screening : ${screenings}">
+        <td th:text="${screening.startTime}">2025-05-14 19:00</td>
+        <td><a th:href="@{/movies/{id}(id=${screening.movie.id})}" th:text="${screening.movie.title}">La grande bellezza</a></td>
+        <td th:text="${screening.room.name}">Grand Théâtre Lumière</td>
+    </tr>
+</table>
+<p th:if="${screenings.isEmpty()}">Nessuna proiezione in programma</p>
+
 </body>
 </html>

@@ -21,7 +21,7 @@ public class MovieService {
 
     //il controller(cameriere) chiede al service(cuoco) "dammi tutti i film" e il cuoco delega il lavoro al repository(aiuto-cuoco) il quale restituira tutti i film
     public List<Movie> findAll(){
-        return movieRepository.findAll();
+        return movieRepository.findAllWithDirector();
     }
 
     //metodo per cercare un film specifico

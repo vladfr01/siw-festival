@@ -5,6 +5,7 @@ package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.model.Festival;
 import it.uniroma3.siw.service.FestivalService;
+import it.uniroma3.siw.service.ScreeningService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +18,11 @@ public class FestivalController {
 
     //creo variabile cuoco dentro questa classe
     private final FestivalService festivalService;
+    private final ScreeningService screeningService;
 
-    public FestivalController(FestivalService festivalService) {
+    public FestivalController(FestivalService festivalService, ScreeningService screeningService) {
         this.festivalService = festivalService;
+        this.screeningService = screeningService;
     }
 
     //il cameriere porta al cliente il modulo vuoto per inserire il nuovo piatto dentro al menu
@@ -43,6 +46,7 @@ public class FestivalController {
             return "redirect:/festivals";
         }
         model.addAttribute("festival", festival.get());
+        model.addAttribute("screenings", screeningService.findByFestival(id));
         return "festivals/show";
     }
 

@@ -6,4 +6,5 @@ import java.util.List;
 public interface FestivalRepository extends JpaRepository<Festival, Long> {
     //il magazziniere impara la richiesta (trova tutti i festival di cannes)
     List<Festival> findByCityContainingIgnoreCase(String city);
+
 }
