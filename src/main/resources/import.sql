@@ -10,6 +10,10 @@ insert into movie (id, title, year, duration, genre, director_id) values (nextva
 insert into movie (id, title, year, duration, genre, director_id) values (nextval('movie_seq'), 'Nuovo Cinema Paradiso', 1988, 155, 'Drammatico', (select id from director where surname = 'Tornatore'));
 insert into movie (id, title, year, duration, genre, director_id) values (nextval('movie_seq'), 'Perfect Days', 2023, 123, 'Drammatico', (select id from director where surname = 'Wenders'));
 
+insert into review (id, rating, text, movie_id) values (nextval('review_seq'), 4, 'Interessante e toccante', (select id from movie where title = 'La grande bellezza'));
+insert into review (id, rating, text, movie_id) values (nextval('review_seq'), 5, 'Colpito dalla sceneggiatura e dai dettagli', (select id from movie where title = 'Oppenheimer'));
+insert into review (id, rating, text, movie_id) values (nextval('review_seq'), 1, 'Noioso', (select id from movie where title = 'Perfect Days'));
+
 insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Mostra del Cinema di Venezia', 'Venezia', '82ª edizione', '2025-08-27', '2025-09-06');
 insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Festival di Cannes', 'Cannes', '78ª edizione', '2025-05-13', '2025-05-24');
 insert into festival (id, name, city, edition, start_date, end_date) values (nextval('festival_seq'), 'Berlinale', 'Berlino', '75ª edizione', '2025-02-13', '2025-02-23');
@@ -26,3 +30,9 @@ insert into festival_movie (festival_id, movie_id) values ((select id from festi
 insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Festival di Cannes'), (select id from movie where title = 'Perfect Days'));
 insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Festival di Cannes'), (select id from movie where title = 'Nuovo Cinema Paradiso'));
 insert into festival_movie (festival_id, movie_id) values ((select id from festival where name = 'Berlinale'), (select id from movie where title = 'Il sorpasso'));
+
+insert into screening (id, start_time, movie_id, room_id) values (nextval('screening_seq'), '2025-05-14 19:00:00', (select id from movie where title = 'La grande bellezza'), (select id from room where name = 'Grand Théâtre Lumière'));
+insert into screening (id, start_time, movie_id, room_id) values (nextval('screening_seq'), '2025-05-15 21:30:00', (select id from movie where title = 'Perfect Days'), (select id from room where name = 'Salle Debussy'));
+insert into screening (id, start_time, movie_id, room_id) values (nextval('screening_seq'), '2025-08-28 20:00:00', (select id from movie where title = 'Nuovo Cinema Paradiso'), (select id from room where name = 'Sala Grande'));
+insert into screening (id, start_time, movie_id, room_id) values (nextval('screening_seq'), '2025-08-29 22:00:00', (select id from movie where title = 'Oppenheimer'), (select id from room where name = 'Sala Darsena'));
+

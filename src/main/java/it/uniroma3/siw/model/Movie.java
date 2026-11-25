@@ -19,13 +19,21 @@ public class Movie {
     private Integer duration; //minuti
     private String genre;
 
-    //relazione uno a molti con Director (il film appartiene a un solo regista)
+    //relazione molit a uno con Director (molti film , un regista)
     @ManyToOne
     private Director director;
 
     //relazione molti a molti con festivals (ogni festival ha diversi film) -> qui movies fa da riflesso
     @ManyToMany(mappedBy = "movies")
     private List<Festival> festivals;
+
+    //relazione molti a uno con screening(un film puo essere legato a piu proiezioni)
+    @OneToMany(mappedBy = "movie")
+    private List<Screening> screenings;
+
+    //relazione molti a uno (un film, tante recensioni)
+    @OneToMany(mappedBy = "movie")
+    private List<Review> reviews;
 
 
     public Long getId() {
@@ -69,4 +77,12 @@ public class Movie {
     //get e setter della lista festivals
     public List<Festival> getFestivals(){return festivals;}
     public void setFestivals(List<Festival> festivals){this.festivals = festivals;}
+
+    //get e setter della lista screenings
+    public List<Screening> getScreenings() {return screenings;}
+    public void setScreenings(List<Screening> screenings) {this.screenings = screenings;}
+
+    //get e set della lista reviews
+    public List<Review> getReviews() {return reviews;}
+    public void setReviews(List<Review> reviews) {this.reviews = reviews;}
 }

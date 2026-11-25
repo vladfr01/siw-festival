@@ -30,8 +30,28 @@
         <a th:href="@{/festivals/{id}(id=${festival.id})}" th:text="${festival.name}"> Festival di Cannes </a>
     </li>
 </ul>
-
 <p th:if="${movie.festivals.isEmpty()}">Nessun festival presente</p>
+
+<h2>Proiezioni</h2>
+<table th:unless="${movie.screenings.isEmpty()}">
+    <tr><th>Data e ora</th><th>Sala</th><th>Festival</th></tr>
+    <tr th:each="screening : ${movie.screenings}">
+        <td th:text="${screening.startTime}">2025-05-14 19:00</td>
+        <td th:text="${screening.room.name}">Grand Théâtre Lumière</td>
+        <td th:text="${screening.room.festival.name}">La grande bellezza</td>
+    </tr>
+</table>
+<p th:if="${movie.screenings.isEmpty()}">Nessuna proiezione in programma</p>
+
+<h2>Recensioni</h2>
+<table th:unless="${movie.reviews.isEmpty()}">
+    <tr><th>Voto</th><th>Cosa ne penso</th></tr>
+    <tr th:each="review : ${movie.reviews}">
+        <td th:text="${review.rating} + '/5'">5</td>
+        <td th:text="${review.text}">Colpito dalla sceneggiatura e dai dettagli</td>
+    </tr>
+</table>
+<p th:if="${movie.reviews.isEmpty()}">Ancora nessuna recensione</p>
 
 </body>
 </html>
