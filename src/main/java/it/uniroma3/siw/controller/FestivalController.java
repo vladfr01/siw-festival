@@ -31,6 +31,7 @@ public class FestivalController {
         return "festivals/list";
     }
 
+    //il cameriere porta al cliente il modulo vuoto per inserire il nuovo piatto dentro al menu
     @GetMapping("/festivals/new") //la voce del menu "voglio aggiungere un festival"
     public String newForm(Model model) {
         model.addAttribute("festival", new Festival());
@@ -40,7 +41,7 @@ public class FestivalController {
     //il cameriere riceve il modulo compilato
     @PostMapping("/festivals")
     public String save(@ModelAttribute("festival") Festival festival){
-        Festival saved = festivalService.save(festival);
+        Festival saved = festivalService.save(festival); // il salvataggio del cuoco (che poi farebbe il magazzino)
         return "redirect:/festivals/" + saved.getId();
     }
 

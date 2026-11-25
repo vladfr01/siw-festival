@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuovo Regista</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Nuovo Regista</h1>
+<p><a href="/directors">← Tutti i registi</a></p>
+
+<form th:action="@{/directors}" method="post" th:object="${director}">
+    <p><label>Nome<br><input type="text" th:field="*{name}" required></label></p>
+    <p><label>Cognome<br><input type="text" th:field="*{surname}" required></label></p>
+    <p><label>Data di Nascita<br><input type="date" th:field="*{birthDate}" placeholder="1970-05-31"></label></p>
+    <p><label>Nazionalità<br><input type="text" th:field="*{nationality}"></label></p>
+    <button type="submit">Salva il regista</button>
+</form>
+</body>
+</html>
