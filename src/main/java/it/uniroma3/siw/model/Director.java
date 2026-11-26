@@ -11,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import java.util.List;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 public class Director {
@@ -53,4 +54,17 @@ public class Director {
     public List<Movie> getMovies(){return movies;}
     public void setMovies(List<Movie> movies){this.movies = movies;}
 
+    //metodi per evitare doppioni di director
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Director director = (Director) o;
+        return Objects.equals(name, director.name) && Objects.equals(surname, director.surname) && Objects.equals(birthDate, director.birthDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, birthDate);
+    }
 }

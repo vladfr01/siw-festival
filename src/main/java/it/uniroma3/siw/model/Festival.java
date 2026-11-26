@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Festival {
@@ -63,5 +64,17 @@ public class Festival {
     //rooms
     public List<Room> getRooms(){return rooms;}
     public void setRooms(List<Room> rooms){this.rooms = rooms;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Festival festival = (Festival) o;
+        return Objects.equals(name, festival.name) && Objects.equals(edition, festival.edition);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, edition);
+    }
 }
 

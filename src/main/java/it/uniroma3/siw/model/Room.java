@@ -4,6 +4,7 @@ package it.uniroma3.siw.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Entity
@@ -37,5 +38,16 @@ public class Room {
     public Festival getFestival(){return festival;}
     public void setFestival(Festival festival){this.festival = festival;}
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return Objects.equals(name, room.name) && Objects.equals(festival, room.festival);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, festival);
+    }
 }
 

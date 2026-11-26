@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.ManyToOne;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Movie {
@@ -85,4 +86,20 @@ public class Movie {
     //get e set della lista reviews
     public List<Review> getReviews() {return reviews;}
     public void setReviews(List<Review> reviews) {this.reviews = reviews;}
+
+
+    //metodi per evitare doppioni facendo un confronto
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;  //stesso biscotto fisico -> uguali
+        if (o == null || getClass() != o.getClass()) return false;  // niente, o non e' un Movie -> diversi
+        Movie other = (Movie) o;
+        return Objects.equals(title, other.title) && Objects.equals(year, other.year);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(title, year);
+    }
+
 }
