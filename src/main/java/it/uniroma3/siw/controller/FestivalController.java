@@ -9,6 +9,7 @@ import it.uniroma3.siw.service.ScreeningService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDateTime;
 
 import java.util.Optional;
 
@@ -65,5 +66,23 @@ public class FestivalController {
     public String delete(@PathVariable Long id) {
         festivalService.deleteById(id);
         return "redirect:/festivals";
+    }
+
+    // porta il modulo per programmare una proiezione in questo festival
+    @GetMapping("/festivals/{id}/screenings/new")
+    public String newScreeningForm(@PathVariable Long id, Model model) {
+        Optional<Festival> festival = festivalService.findById(id);
+        if (festival.isEmpty()) {
+            return "redirect:/festivals";
+        }
+        model.addAttribute("festival", festival.get());
+        return "screenings/form";
+    }
+
+    // riceve il modulo compilato
+    @PostMapping("/festivals/{id}/screenings")
+    public String scheduleScreening(@PathVariable Long id, @RequestParam Long movieId, @RequestParam Long roomId, @RequestParam LocalDateTime startTime) {
+        screeningService.schedule(movieId, roomId, startTime);
+        return "redirect:/festivals/" + id;
     }
 }

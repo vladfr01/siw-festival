@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Programma una proiezione</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Programma una proiezione</h1>
+<p th:text="${festival.name}">Festival di Cannes</p>
+<p><a th:href="@{/festivals/{id}(id=${festival.id})}">← Torna al festival</a></p>
+
+<form th:action="@{/festivals/{id}/screenings(id=${festival.id})}" method="post">
+    <p><label>Film<br>
+        <select name="movieId" required>
+            <option th:each="movie : ${festival.movies}" th:value="${movie.id}" th:text="${movie.title}">Titolo</option>
+        </select>
+    </label></p>
+    <p><label>Sala<br>
+        <select name="roomId" required>
+            <option th:each="room : ${festival.rooms}" th:value="${room.id}" th:text="${room.name}">Sala</option>
+        </select>
+    </label></p>
+    <p><label>Data e ora<br>
+        <input type="datetime-local" name="startTime" required>
+    </label></p>
+    <button type="submit">Programma</button>
+</form>
+</body>
+</html>

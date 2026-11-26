@@ -39,6 +39,7 @@
 <p th:if="${festival.rooms.isEmpty()}">Nessuna sala presente</p>
 
 <h2>Programma</h2>
+<p><a th:href="@{/festivals/{id}/screenings/new(id=${festival.id})}">+ Programma una proiezione</a></p>
 <table th:unless="${screenings.isEmpty()}">
     <tr><th>Data</th><th>Film</th><th>Sala</th></tr>
     <tr th:each="screening : ${screenings}">
