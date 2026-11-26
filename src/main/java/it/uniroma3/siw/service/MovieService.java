@@ -3,7 +3,7 @@ package it.uniroma3.siw.service;
 
 import java.util.List; //import che serve a creare una lista di tanti film
 import java.util.Optional; // import necessario ad evitare che il programma vadi in crash nel caso in cui si cerchi un film che non esiste
-
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service; //import del framework di spring che ci servira' a dire che MovieServie e' il Cuoco
 
 import it.uniroma3.siw.model.Movie; //import che serve a dire al cuoco qual e' l'oggeto su cui dovra lavorare
@@ -20,11 +20,13 @@ public class MovieService {
     }
 
     //il controller(cameriere) chiede al service(cuoco) "dammi tutti i film" e il cuoco delega il lavoro al repository(aiuto-cuoco) il quale restituira tutti i film
+    @Transactional(readOnly = true)
     public List<Movie> findAll(){
         return movieRepository.findAllWithDirector();
     }
 
     //metodo per cercare un film specifico
+    @Transactional(readOnly = true)
     public Optional<Movie> findById(long id){
         return movieRepository.findById(id);
     }

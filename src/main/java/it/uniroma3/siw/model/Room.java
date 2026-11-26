@@ -20,6 +20,9 @@ public class Room {
     @ManyToOne
     private Festival festival;
 
+    @OneToMany(mappedBy = "room", cascade = CascadeType.REMOVE)
+    private List<Screening> screenings;
+
     //GETTER E SETTER
 
     //id
@@ -37,6 +40,11 @@ public class Room {
     //festival
     public Festival getFestival(){return festival;}
     public void setFestival(Festival festival){this.festival = festival;}
+
+    //screenings
+    public List<Screening> getScreenings() {return screenings;}
+
+    public void setScreenings(List<Screening> screenings) {this.screenings = screenings;}
 
     @Override
     public boolean equals(Object o) {
