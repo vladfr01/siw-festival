@@ -7,6 +7,9 @@
 </head>
 <body>
 <h1 th:text="${festival.name}">Nome del Festival</h1>
+<form th:action="@{/festivals/{id}/delete(id=${festival.id})}" method="post">
+    <button type="submit">Elimina festival</button>
+</form>
 <p><a href="/festivals">← Tutti i festival</a></p>
 
 <table>

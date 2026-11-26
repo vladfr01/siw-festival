@@ -25,4 +25,7 @@ public class FestivalService {
     public List<Festival> findByCity(String city){
         return festivalRepository.findByCityContainingIgnoreCase(city);
     }
+    public void deleteById(long id){
+        festivalRepository.deleteById(id);
+    }
 }

@@ -20,8 +20,8 @@ public class Festival {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    //un festival ha diverse sale dove proiettare i film
-    @OneToMany(mappedBy = "festival")
+    //un festival ha diverse sale dove proiettare i film e in piu cin cascade dici che quando cancelli il festival, cancelli anche le sue sale
+    @OneToMany(mappedBy = "festival", cascade = CascadeType.REMOVE  )
     private List<Room> rooms;
 
     //creo la tabella della relazione molti a molti tra movies e festivals
@@ -76,5 +76,7 @@ public class Festival {
     public int hashCode() {
         return Objects.hash(name, edition);
     }
+
+
 }
 

@@ -60,4 +60,10 @@ public class FestivalController {
         model.addAttribute("city", city);
         return "festivals/list";
     }
+
+    @PostMapping("/festivals/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        festivalService.deleteById(id);
+        return "redirect:/festivals";
+    }
 }
